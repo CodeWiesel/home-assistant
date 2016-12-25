@@ -119,7 +119,7 @@ class OnkyoDevice(MediaPlayerDevice):
                 self._current_source = '_'.join(
                     [i for i in current_source_raw[1]])
         self._muted = bool(mute_raw[1] == 'on')
-        self._volume = int(volume_raw[1], 16) / 80.0
+        self._volume = int(volume_raw[1], 16) / 200.0
 
     @property
     def name(self):
@@ -162,7 +162,7 @@ class OnkyoDevice(MediaPlayerDevice):
 
     def set_volume_level(self, volume):
         """Set volume level, input is range 0..1. Onkyo ranges from 1-80."""
-        self.command('volume {}'.format(int(volume*80)))
+        self.command('volume {}'.format(int(volume*200)))
 
     def mute_volume(self, mute):
         """Mute (true) or unmute (false) media player."""
